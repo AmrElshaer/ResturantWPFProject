@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Resturant.Kinds
 {
+	//KindViewModel
     class KindViewModel:BindableBase
     {
         
