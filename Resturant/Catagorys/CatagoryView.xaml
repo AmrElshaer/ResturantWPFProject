@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Resturant.Catagorys.CatagoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Resturant.Catagorys"
+          
+            xmlns:MahappsMetro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+ 
+    <Control.Resources>
+        <DataTemplate DataType="{x:Type local:CreateCatagoryViewModel}">
+            <local:CreateCatagoryView></local:CreateCatagoryView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ListCatagoryViewModel}">
+            <local:ListCatagoryView></local:ListCatagoryView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:DeleteCatagoryViewModel}">
+            <local:DeleteCatagoryView></local:DeleteCatagoryView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:EditCatagoryViewModel}">
+            <local:EditCatagoryView></local:EditCatagoryView>
+        </DataTemplate>
+    </Control.Resources>
+    <Grid Margin="10" x:Name="CatagoryMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" ></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Content="Create" MaxHeight="100" Grid.Row="1" Grid.Column="0" Command="{Binding NavCommand}" CommandParameter="Create"></Button>
+
+            <Button Content="Catagorys" MaxHeight="100" Grid.Row="3" Grid.Column="0" Command="{Binding  NavCommand,Mode=TwoWay}" CommandParameter="Catagorys"></Button>
+        </Grid>
+        <Grid Grid.Column="1">
+            <MahappsMetro:TransitioningContentControl Grid.Row="0" Grid.Column="1" x:Name="transitioning"  Content="{Binding CurrentViewModel,Mode=TwoWay}" Transition="Right" />
+      
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Resturant.Kinds.ListKindsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Resturant.Kinds"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ItemsControl x:Name="Kinds" ItemsSource="{Binding Kinds}" Margin="30">
+            <ItemsControl.ItemTemplate>
+
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}" Padding="10"></TextBlock>
+                                <TextBlock Text="{Binding Price}" Padding="10"></TextBlock>
+                            </StackPanel>
+                            <Image MaxWidth="200">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding ImagePath}">
+
+                                    </BitmapImage>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Orientation="Horizontal" Margin="10">
+                                <Button Margin="10" Command="{Binding  Path=DataContext.EditCommand,ElementName=Kinds }"  CommandParameter="{Binding}">Edit</Button>
+                                <Button Margin="10"  Command="{Binding Path=DataContext.DeleteCommand,ElementName=Kinds }" CommandParameter="{Binding}">Delete</Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+    </ScrollViewer>
+</UserControl>
